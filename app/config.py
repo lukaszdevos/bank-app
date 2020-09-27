@@ -15,13 +15,14 @@ class DevelopmentConfig(Config):
 
     DEBUG = True
     ENV = "development"
+    MONGODB_SETTINGS = {"host": "mongodb://localhost:27017/bankapp"}
 
 
 class TestingConfig(Config):
     """Configurations for Testing, with a separate test database."""
 
     TESTING = True
-    MONGO_DATABASE_URI = "mongodb://localhost:27017/testingbankapp"
+    MONGODB_SETTINGS = {"host": "mongodb://localhost:27017/testingbankapp"}
     DEBUG = True
     ENV = "testing"
 
