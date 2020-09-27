@@ -1,28 +1,21 @@
 from flask import Response, request, jsonify
 from flask_restful import Resource
 
-from users.db.models import UserModel
+from users.db.models import User
 import json
 
 
-class HomePgae(Resource):
+class HomePage(Resource):
     def get(self):
-        check_all_db = UserModel.objects.to_json()
-        return Response(check_all_db, mimetype="application/json", status=200)
+        test_username = User.objects().to_json()
+        return Response(test_username, mimetype="application/json", status=200)
 
 
-class TestPost(Resource):
+class Registration(Resource):
     def post(self):
         data = json.loads(request.data)
-        test_db = UserModel(**data).save()
-        output = test_db.to_json()
-        print(output)
+        register_user = User(**data).save()
+        register_user.hash_password()
+        register_user.save()
+        output = register_user.to_json()
         return Response(output, status=200)
-
-
-class TestGet(Resource):
-    def get(self, username):
-        print(username)
-        test_username = UserModel.objects.filter(username=username).to_json()
-        print(test_username)
-        return Response(test_username, mimetype="application/json", status=200)

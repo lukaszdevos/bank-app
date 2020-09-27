@@ -7,15 +7,15 @@ class Config(object):
     DEBUG = False
     CSRF_ENABLED = True
     SECRET_KEY = os.getenv("SECRET")
-    MONGO_DATABASE_URI = os.getenv("DATABASE_URL")
+    MONGODB_SETTINGS = {"host": "mongodb://localhost:27017/bankapp"}
 
 
 class DevelopmentConfig(Config):
     """Configurations for Development."""
 
+    PORT = 8000
     DEBUG = True
     ENV = "development"
-    MONGODB_SETTINGS = {"host": "mongodb://localhost:27017/bankapp"}
 
 
 class TestingConfig(Config):

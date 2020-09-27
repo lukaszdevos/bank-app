@@ -1,7 +1,6 @@
-from users.views import HomePgae, TestPost, TestGet
+from users.views import HomePage, Registration
 
 
 def initialize_users_routes(api):
-    api.add_resource(HomePgae, "/", methods=["GET"])
-    api.add_resource(TestPost, "/post/", methods=["POST"])
-    api.add_resource(TestGet, "/get/<string:username>/", methods=["GET"])
+    api.add_resource(HomePage, "/", methods=["GET"])
+    api.add_resource(Registration, "/registration/", methods=["GET", "POST"])

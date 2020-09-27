@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_restful import Api
+from flask_bcrypt import Bcrypt
+
 
 from app.config import app_config
 from database.db import initialize_db
@@ -12,5 +14,6 @@ def create_app(config_name):
     initialize_db(app)
     api = Api(app)
     initialize_users_routes(api)
+    bcrypt = Bcrypt(app)
 
     return app
