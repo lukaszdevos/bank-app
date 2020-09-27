@@ -1,5 +1,5 @@
 from database.db import db
 
 
-class Test(db.Document):
+class UserModel(db.Document):
     username = db.StringField()
