@@ -8,6 +8,9 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = os.getenv("SECRET")
     MONGODB_SETTINGS = {"host": "mongodb://localhost:27017/bankapp"}
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+    JWT_TOKEN_LOCATION = ["cookies"]
+    JWT_CSRF_CHECK_FORM = True
 
 
 class DevelopmentConfig(Config):

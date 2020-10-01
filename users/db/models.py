@@ -1,10 +1,11 @@
 import datetime
 from flask_bcrypt import generate_password_hash, check_password_hash
+from flask_user import UserMixin
 
 from database.db import db
 
 
-class User(db.Document):
+class User(db.Document, UserMixin):
     email = db.EmailField(required=True, max_length=100, unique=True)
     first_name = db.StringField(required=True, max_length=100)
     last_name = db.StringField(required=True, max_length=100)
